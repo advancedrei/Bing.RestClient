@@ -74,6 +74,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Locations\AddressPartTests.cs" />
+    <Compile Include="Locations\AddressTests.cs" />
+    <Compile Include="Locations\APIKEY.cs" />
+    <Compile Include="Locations\CoordinateTests.cs" />
+    <Compile Include="Locations\Extensions.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
