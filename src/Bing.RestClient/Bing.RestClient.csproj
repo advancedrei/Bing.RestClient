@@ -36,6 +36,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Core\Address.cs" />
+    <Compile Include="Locations\AddressEntityType.cs" />
+    <Compile Include="Locations\BingLocationsRestClient.cs" />
+    <Compile Include="Locations\ResponseExtensions.cs" />
+    <Compile Include="Locations\ResultTypes.cs" />
+    <Compile Include="Locations\UserContext.cs" />
     <Compile Include="Maps\Address.cs" />
     <Compile Include="Maps\BirdseyeMetadata.cs" />
     <Compile Include="Core\BoundingBox.cs" />
