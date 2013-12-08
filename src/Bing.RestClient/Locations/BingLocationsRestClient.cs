@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 
 using PortableRest;
+using Bing.Maps;
 
 namespace Bing.Locations
 {
@@ -135,7 +136,7 @@ namespace Bing.Locations
 
         public async Task<Response> GetGeoCodeResult(Address address, int maxResults = 1)
         {
-            return await GetGeoCodeResult(address.addressLine, address.locality, address.adminDistrict, address.postalCode, address.countryRegion, maxResults);
+            return await GetGeoCodeResult(address.AddressLine, address.Locality, address.AdminDistrict, address.PostalCode, address.CountryRegion, maxResults);
         }
 
         private async Task<T> Get<T>(string endPoint, IDictionary<string, object> parms) where T : class

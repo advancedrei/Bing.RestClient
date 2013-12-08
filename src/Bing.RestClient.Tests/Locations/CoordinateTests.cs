@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Bing.Locations;
+using Bing.Maps;
 
 namespace GeoCoderTests
 {
@@ -49,11 +50,11 @@ namespace GeoCoderTests
         {
             var address = new Address()
             {
-                addressLine ="One Microsoft Way",
-                locality = "Redmond",
-                adminDistrict = "WA",
-                postalCode = "98052",
-                countryRegion ="US"
+                AddressLine ="One Microsoft Way",
+                Locality = "Redmond",
+                AdminDistrict = "WA",
+                PostalCode = "98052",
+                CountryRegion ="US"
             };
             var coord = await _service.GetCoordinate(address);
 

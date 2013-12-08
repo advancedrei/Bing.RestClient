@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Bing.Locations;
+using Bing.Maps;
 
 namespace GeoCoderTests
 {
@@ -29,10 +30,10 @@ namespace GeoCoderTests
         [TestMethod]
         public async Task RoundtripPostalCode()
         {
-            var coord = await _service.GetCoordinate(new Address() { postalCode = "55116", countryRegion = "US" });
+            var coord = await _service.GetCoordinate(new Address() { PostalCode = "55116", CountryRegion = "US" });
             var address = await _service.GetAddress(coord.Item1, coord.Item2);
 
-            Assert.AreEqual(address.postalCode, "55116");
+            Assert.AreEqual(address.PostalCode, "55116");
         }
 
         [TestMethod]
@@ -40,11 +41,11 @@ namespace GeoCoderTests
         {
             var address = await _service.ParseAddress("One Microsoft Way, Redmond, WA 98052");
 
-            Assert.AreEqual(address.addressLine, "1 Microsoft Way");
-            Assert.AreEqual(address.locality, "Redmond");
-            Assert.AreEqual(address.adminDistrict, "WA");
-            Assert.AreEqual(address.postalCode, "98052");
-            Assert.AreEqual(address.countryRegion, "United States");
+            Assert.AreEqual(address.AddressLine, "1 Microsoft Way");
+            Assert.AreEqual(address.Locality, "Redmond");
+            Assert.AreEqual(address.AdminDistrict, "WA");
+            Assert.AreEqual(address.PostalCode, "98052");
+            Assert.AreEqual(address.CountryRegion, "United States");
         }
 
         [TestMethod]
@@ -55,11 +56,11 @@ namespace GeoCoderTests
 
             var address = await _service.ParseAddress("1950 Meadowvale Blvd., Mississauga, ON L5N 8L9");
 
-            Assert.AreEqual(address.addressLine, "1950 Meadowvale Blvd");
-            Assert.AreEqual(address.locality, "Mississauga");
-            Assert.AreEqual(address.adminDistrict, "ON");
-            Assert.AreEqual(address.postalCode, "L5N 8L9");
-            Assert.AreEqual(address.countryRegion, "Canada");
+            Assert.AreEqual(address.AddressLine, "1950 Meadowvale Blvd");
+            Assert.AreEqual(address.Locality, "Mississauga");
+            Assert.AreEqual(address.AdminDistrict, "ON");
+            Assert.AreEqual(address.PostalCode, "L5N 8L9");
+            Assert.AreEqual(address.CountryRegion, "Canada");
         }
     }
 }

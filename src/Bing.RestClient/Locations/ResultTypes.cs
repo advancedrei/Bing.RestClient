@@ -1,26 +1,10 @@
 ﻿using System.Collections.Generic;
 
+using Bing.Maps;
+using Bing.Core;
+
 namespace Bing.Locations
 {
-    public class Address
-    {
-        public string countryRegion { get; set; }
-        public string adminDistrict { get; set; }
-        public string postalCode { get; set; }
-        public string locality { get; set; }
-        public string adminDistrict2 { get; set; }
-        public string formattedAddress { get; set; }
-        public string neighborhood { get; set; }
-        public string addressLine { get; set; }
-        public string landmark { get; set; }
-    }
-
-    public class Point
-    {
-        public string type { get; set; }
-        public List<double> coordinates { get; set; }
-    }
-
     public class GeocodePoint
     {
         public string type { get; set; }
