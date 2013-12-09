@@ -1,26 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Bing.Core;
+using Bing.Spatial;
 using PortableRest;
 
-namespace Bing.Spatial
+namespace Bing
 {
     
     /// <summary>
     /// 
     /// </summary>
-    public class SpatialDataClient : RestClient
+    public class SpatialDataClient : BingClientBase
     {
-
-        #region Private Members
-
-        private string ApiKey { get; set; }
-
-        #endregion
 
         #region Public Properties
 
@@ -38,17 +32,10 @@ namespace Bing.Spatial
         /// 
         /// </summary>
         /// <param name="apiKey"></param>
-        public SpatialDataClient(string apiKey)
+        public SpatialDataClient(string apiKey) : base(apiKey)
         {
-            ApiKey = apiKey;
-
-            // PCL-friendly way to get current version
-            var assembly = typeof (PointOfInterest).GetTypeInfo().Assembly;
-            var assemblyName = new AssemblyName(assembly.FullName);
-            var version = assemblyName.Version;
 
             BaseUrl = "https://spatial.virtualearth.net/REST/v1/data";
-            UserAgent = string.Format("Bing Client for .NET v{0} (PortableRest 2.1)", version);
             DataSources = new Dictionary<string, string>()
             {
                 {"NorthAmericaPOI", "f22876ec257b474b82fe2ffcb8393150/NavteqNA/NavteqPOIs"},
@@ -265,6 +252,8 @@ namespace Bing.Spatial
 
         #endregion
 
+        #region ConvertMiToKm
+
         /// <summary>
         /// Helper method to convert miles to kilometers.
         /// </summary>
@@ -274,6 +263,8 @@ namespace Bing.Spatial
         {
             return miles*1.609344;
         }
+
+        #endregion
 
         #endregion
 

@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Threading.Tasks;
-
+using Bing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using Bing.Locations;
+using Bing.Maps;
 
 namespace GeoCoderTests
 {
     [TestClass]
     public class AddressPartTests
     {
-        private BingLocationsRestClient _service;
+        private MapsClient _service;
 
         [TestInitialize]
         public void Init()
         {
-            _service = new BingLocationsRestClient(APIKEY.Key, "Portable Bing GeoCoder unit tests");
+            _service = new MapsClient(APIKEY.Key, "Portable Bing GeoCoder unit tests");
         }
 
         [TestMethod]

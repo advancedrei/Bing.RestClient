@@ -37,12 +37,10 @@
     <DocumentationFile>bin\Release\Bing.RestClient.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Core\Address.cs" />
-    <Compile Include="Locations\AddressEntityType.cs" />
-    <Compile Include="Locations\BingLocationsRestClient.cs" />
-    <Compile Include="Locations\ResponseExtensions.cs" />
-    <Compile Include="Locations\ResultTypes.cs" />
-    <Compile Include="Locations\UserContext.cs" />
+    <Compile Include="BingClientBase.cs" />
+    <Compile Include="Core\AddressBase.cs" />
+    <Compile Include="MapsClient.cs" />
+    <Compile Include="Maps\UserContext.cs" />
     <Compile Include="Maps\Address.cs" />
     <Compile Include="Maps\BirdseyeMetadata.cs" />
     <Compile Include="Core\BoundingBox.cs" />
@@ -62,7 +60,7 @@
     <Compile Include="Maps\Point.cs" />
     <Compile Include="Maps\Resource.cs" />
     <Compile Include="Maps\ResourceSet.cs" />
-    <Compile Include="Maps\Response.cs" />
+    <Compile Include="Maps\MapsResponse.cs" />
     <Compile Include="Maps\RoadShield.cs" />
     <Compile Include="Maps\Route.cs" />
     <Compile Include="Maps\RouteLeg.cs" />
@@ -79,7 +77,7 @@
     <Compile Include="Spatial\PointOfInterest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spatial\SearchRadius.cs" />
-    <Compile Include="Spatial\SpatialDataClient.cs" />
+    <Compile Include="SpatialDataClient.cs" />
     <Compile Include="Spatial\SpatialResponseList.cs" />
     <Compile Include="Spatial\SpatialResponseListWrapper.cs" />
     <Compile Include="Spatial\SpatialResponseWrapper.cs" />

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Bing.Spatial
 {
@@ -13,6 +12,23 @@ namespace Bing.Spatial
     /// <remarks>These were determined by AdvancedREI, not Bing.</remarks>
     public static class PoiEntityGroups
     {
+
+        #region BuildFilter
+
+        /// <summary>
+        /// Converts a list of PoiEntityTypes to the format the Bing API requires.
+        /// </summary>
+        /// <param name="pointsOfInterest">The list of Points of Interest to search for.</param>
+        /// <returns>An Odata-formatted filter clause that can be passed to the Find() method.</returns>
+        public static string BuildFilter(List<PoiEntityTypes> pointsOfInterest)
+        {
+            var values = pointsOfInterest.Aggregate(new StringBuilder(), (current, next) =>
+                current.Append(string.Format("{0},", (int)next))).ToString();
+
+            return string.Format("entityTypeId in ({0})", values.TrimEnd(Convert.ToChar(",")));
+        }
+
+        #endregion
 
         #region Transportation
 
@@ -209,18 +225,6 @@ namespace Bing.Spatial
 
         #endregion
 
-        /// <summary>
-        /// Converts a list of PoiEntityTypes to the format the Bing API requires.
-        /// </summary>
-        /// <param name="pointsOfInterest">The list of Points of Interest to search for.</param>
-        /// <returns>An Odata-formatted filter clause that can be passed to the Find() method.</returns>
-        public static string BuildFilter(List<PoiEntityTypes> pointsOfInterest)
-        {
-            var values = pointsOfInterest.Aggregate(new StringBuilder(), (current, next) =>
-                current.Append(string.Format("{0},", (int)next))).ToString();
-
-            return string.Format("entityTypeId in ({0})", values.TrimEnd(Convert.ToChar(",")));
-        }
 
     }
 }
