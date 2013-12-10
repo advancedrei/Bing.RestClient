@@ -14,7 +14,7 @@ namespace Bing.Maps
     /// based on the values in the URL request. 
     /// </summary>
     [DataContract(Name = "response")]
-    public class MapsResponse
+    public class MapsResponse<T> where T: Location
     {
 
         #region Properties
@@ -65,7 +65,7 @@ namespace Bing.Maps
         /// A collection of ResourceSet objects. A ResourceSet is a container of Resources returned by the request.
         /// </summary>
         [DataMember(Name = "resourceSets", EmitDefaultValue = false)]
-        public List<ResourceSet> ResourceSets { get; set; }
+        public List<ResourceSet<T>> ResourceSets { get; set; }
 
         #endregion
 

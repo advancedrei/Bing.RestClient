@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using Bing.Maps;
-using Bing.Maps;
-using Bing.Spatial;
 using PortableRest;
 
 namespace Bing
@@ -45,7 +41,8 @@ namespace Bing
         /// <param name="apiKey"></param>
         /// <param name="culture"></param>
         /// <param name="context"></param>
-        public MapsClient(string apiKey, string culture = "en-US", UserContext context = null) : base(apiKey)
+        public MapsClient(string apiKey, string culture = "en-US", UserContext context = null)
+            : base(apiKey)
         {
             BaseUrl = "https://dev.virtualearth.net/REST/v1/";
             Culture = culture;
@@ -54,7 +51,62 @@ namespace Bing
 
         #endregion
 
-        #region Query
+        #region Public Methods
+
+        #region CompressPoints
+
+        /// <summary>
+        /// Implements the Point Compression Algorithm specified at http://msdn.microsoft.com/en-us/library/jj158958.aspx
+        /// </summary>
+        /// <param name="points">A List of <see cref="Point">Points</see> to compress.</param>
+        /// <returns></returns>
+        public string CompressPoints(List<Point> points) 
+        {
+            int latitude = 0;
+            int longitude = 0;
+            var result = new StringBuilder(); 
+
+            foreach (var point in points) 
+            {
+
+                // step 2
+                var newLatitude = Math.Round((decimal)point.Coordinates[0] * 100000);
+                var newLongitude = Math.Round((decimal)point.Coordinates[1] * 100000);
+
+                // step 3
+                var dy = newLatitude - latitude;
+                var dx = newLongitude - longitude;
+                latitude = (int)newLatitude;
+                longitude = (int)newLongitude;
+
+                // step 4 and 5
+                dy = ((int)dy << 1) ^ ((int)dy >> 31);
+                dx = ((int)dx << 1) ^ ((int)dx >> 31);
+
+                // step 6
+                decimal index = ((dy + dx) * (dy + dx + 1) / 2) + dy;
+
+                while (index > 0) {
+
+                    // step 7
+                    var rem = (int)(Convert.ToInt64(index) & 31);
+                    index = (index - rem) / 32;
+
+                    // step 8
+                    if (index > 0) rem += 32;
+
+                    // step 9
+                    result = result.Append("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-"[rem]);
+                }
+            }
+
+            // step 10
+            return result.ToString();
+        }
+
+        #endregion
+
+        #region LocationQuery
 
         /// <summary>
         /// 
@@ -64,15 +116,15 @@ namespace Bing
         /// <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<MapsResponse> Query(Address address, int maxResults = 5, bool includeNeighborhood = true)
+        public async Task<MapsResponse<Location>> LocationQuery(Address address, int maxResults = 5, bool includeNeighborhood = true)
         {
             if (address == null)
             {
                 throw new ArgumentNullException("address", "The address cannot be null.");
             }
-            
+
             var request = new RestRequest("Locations") { ContentType = ContentTypes.Json };
-            
+
             if (!string.IsNullOrWhiteSpace(address.AdminDistrict))
             {
                 request.AddQueryString("adminDistrict", address.AdminDistrict);
@@ -101,7 +153,7 @@ namespace Bing
 
             PrepRequest(ref request);
 
-            return await ExecuteAsync<MapsResponse>(request);
+            return await ExecuteAsync<MapsResponse<Location>>(request);
         }
 
         /// <summary>
@@ -111,7 +163,7 @@ namespace Bing
         /// <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<MapsResponse> Query(Point point, bool includeNeighborhood = true)
+        public async Task<MapsResponse<Location>> LocationQuery(Point point, bool includeNeighborhood = true)
         {
             if (point == null)
             {
@@ -124,7 +176,7 @@ namespace Bing
 
             PrepRequest(ref request);
 
-            return await ExecuteAsync<MapsResponse>(request);
+            return await ExecuteAsync<MapsResponse<Location>>(request);
         }
 
         /// <summary>
@@ -134,7 +186,7 @@ namespace Bing
         /// <param name="longitude"></param>
         /// <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
         /// <returns></returns>
-        public async Task<MapsResponse> Query(double latitude, double longitude, bool includeNeighborhood = true)
+        public async Task<MapsResponse<Location>> LocationQuery(double latitude, double longitude, bool includeNeighborhood = true)
         {
             var request = new RestRequest("Locations/{latitude},{longitude}") { ContentType = ContentTypes.Json };
             request.AddUrlSegment("latitude", latitude.ToString());
@@ -143,7 +195,7 @@ namespace Bing
 
             PrepRequest(ref request);
 
-            return await ExecuteAsync<MapsResponse>(request);
+            return await ExecuteAsync<MapsResponse<Location>>(request);
         }
 
         /// <summary>
@@ -154,7 +206,7 @@ namespace Bing
         /// <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<MapsResponse> Query(string query, int maxResults = 5, bool includeNeighborhood = true)
+        public async Task<MapsResponse<Location>> LocationQuery(string query, int maxResults = 5, bool includeNeighborhood = true)
         {
             if (string.IsNullOrWhiteSpace(query))
             {
@@ -172,8 +224,12 @@ namespace Bing
 
             PrepRequest(ref request);
 
-            return await ExecuteAsync<MapsResponse>(request);
+            return await ExecuteAsync<MapsResponse<Location>>(request);
         }
+
+        #endregion
+
+
 
         #endregion
 
@@ -197,6 +253,8 @@ namespace Bing
             if (UserContext.MapView != null)
                 request.AddQueryString("umv", UserContext.MapView.ToString());
         }
+
+
 
         #endregion
 

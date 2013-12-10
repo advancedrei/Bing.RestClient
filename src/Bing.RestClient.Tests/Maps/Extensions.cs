@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GeoCoderTests
+namespace Bing.RestClient.Tests.Maps
 {
     static class Extensions
     {
