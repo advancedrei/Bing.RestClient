@@ -33,9 +33,9 @@ namespace Bing.Spatial
         #region Transportation
 
         /// <summary>
-        /// 
+        /// Gets a list of all possible transportation-related entities.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A List of PoiEntityTypes that represent transportation-related entities.</returns>
         public static List<PoiEntityTypes> Transportation()
         {
             return new List<PoiEntityTypes>()
@@ -68,9 +68,9 @@ namespace Bing.Spatial
         }
 
         /// <summary>
-        /// 
+        /// Gets a list of all vehicle parking facilities.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A List of PoiEntityTypes that represent vehicle parking facilities.</returns>
         public static List<PoiEntityTypes> Parking()
         {
             return new List<PoiEntityTypes>()
@@ -86,9 +86,9 @@ namespace Bing.Spatial
         }
 
         /// <summary>
-        /// 
+        /// Gets a list of all public transportation entities.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A List of PoiEntityTypes that represent public transportation entities.</returns>
         public static List<PoiEntityTypes> PublicTransportation()
         {
             return new List<PoiEntityTypes>()
@@ -111,9 +111,9 @@ namespace Bing.Spatial
         #region Financial Services
 
         /// <summary>
-        /// 
+        /// Gets a list of all financial services entities.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A List of PoiEntityTypes that represent financial services entities.</returns>
         public static List<PoiEntityTypes> Financial()
         {
             return new List<PoiEntityTypes>()
@@ -128,9 +128,9 @@ namespace Bing.Spatial
         }
 
         /// <summary>
-        /// 
+        /// Gets a list of all institutional financial services entities.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A List of PoiEntityTypes that represent institutional financial services entities.</returns>
         // ReSharper disable once InconsistentNaming
         public static List<PoiEntityTypes> BanksAndATMs()
         {
@@ -142,9 +142,9 @@ namespace Bing.Spatial
         }
 
         /// <summary>
-        /// 
+        /// Gets a list of all other non-banking financial services.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A List of PoiEntityTypes that represent all other non-banking financial services.</returns>
         public static List<PoiEntityTypes> OtherFinancialServices()
         {
             return new List<PoiEntityTypes>()

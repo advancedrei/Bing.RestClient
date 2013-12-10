@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using Bing.Spatial;
 using PortableRest;
 
@@ -11,7 +6,7 @@ namespace Bing
 {
 
     /// <summary>
-    /// 
+    /// The base for all Bing REST Clients in this library. Handles setting the UserAgent.
     /// </summary>
     public abstract class BingClientBase : RestClient
     {
@@ -28,7 +23,7 @@ namespace Bing
         /// <summary>
         /// Sets the API Key and the UserAgent for the implemented Bing Clients.
         /// </summary>
-        /// <param name="apiKey"></param>
+        /// <param name="apiKey">The key registered to a given user to access the Bing APIs.</param>
         protected BingClientBase(string apiKey)
         {
             ApiKey = apiKey;

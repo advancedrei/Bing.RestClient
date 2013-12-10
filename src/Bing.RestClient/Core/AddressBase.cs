@@ -11,8 +11,11 @@ namespace Bing.Core
     {
 
         /// <summary>
-        /// 
+        /// The official street line of an address relative to the area, as specified by the Locality, or PostalCode, properties.
         /// </summary>
+        /// <remarks>
+        /// Typical use of this element would be to provide a street address or any official address.
+        /// </remarks>
         [DataMember(Name = "addressLine", EmitDefaultValue = false)]
         public string AddressLine { get; set; }
 

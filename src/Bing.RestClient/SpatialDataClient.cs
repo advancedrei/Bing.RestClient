@@ -29,9 +29,9 @@ namespace Bing
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Creates a new instance of the SpatialDataClient.
         /// </summary>
-        /// <param name="apiKey"></param>
+        /// <param name="apiKey">The key registered to a given user to access the Bing APIs.</param>
         public SpatialDataClient(string apiKey) : base(apiKey)
         {
 

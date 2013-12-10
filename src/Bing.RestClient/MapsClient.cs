@@ -36,11 +36,11 @@ namespace Bing
         #region Constructor
 
         /// <summary>
-        /// 
+        /// Creates a new instance of the MapsClient.
         /// </summary>
-        /// <param name="apiKey"></param>
-        /// <param name="culture"></param>
-        /// <param name="context"></param>
+        /// <param name="apiKey">The key registered to a given user to access the Bing APIs.</param>
+        /// <param name="culture">The culture code that map data should be localized to. Supported culture codes are listed here: http://msdn.microsoft.com/en-us/library/hh441729.aspx. </param>
+        /// <param name="context">A <see cref="UserContext"/> object containing information about the user to refine location results.</param>
         public MapsClient(string apiKey, string culture = "en-US", UserContext context = null)
             : base(apiKey)
         {
@@ -109,12 +109,12 @@ namespace Bing
         #region LocationQuery
 
         /// <summary>
-        /// 
+        /// Get a location by specifying values such as a locality, postal code, and street address.
         /// </summary>
         /// <param name="address"></param>
-        /// <param name="maxResults"></param>
+        /// <param name="maxResults">Specifies the maximum number of locations to return in the response.</param>
         /// <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="MapsResponse&lt;Location&gt;"/> object with the results from Bing.</returns>
         /// <exception cref="ArgumentNullException"></exception>
         public async Task<MapsResponse<Location>> LocationQuery(Address address, int maxResults = 5, bool includeNeighborhood = true)
         {
@@ -157,11 +157,11 @@ namespace Bing
         }
 
         /// <summary>
-        /// Get an address for a specified point (latitude and longitude).
+        /// Get an location for a specified point (latitude and longitude).
         /// </summary>
-        /// <param name="point">The coordinates of the location that you want to reverse geocode.</param>
+        /// <param name="point">The coordinates of the location that you want to query.</param>
         /// <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="MapsResponse&lt;Location&gt;"/> object with the results from Bing.</returns>
         /// <exception cref="ArgumentNullException"></exception>
         public async Task<MapsResponse<Location>> LocationQuery(Point point, bool includeNeighborhood = true)
         {
@@ -182,10 +182,10 @@ namespace Bing
         /// <summary>
         /// Get an address for a specified point (latitude and longitude).
         /// </summary>
-        /// <param name="latitude"></param>
-        /// <param name="longitude"></param>
+        /// <param name="latitude">The N-S coordinate for the point in question.</param>
+        /// <param name="longitude">The E-W coordinate for the point in question.</param>
         /// <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="MapsResponse&lt;Location&gt;"/> object with the results from Bing.</returns>
         public async Task<MapsResponse<Location>> LocationQuery(double latitude, double longitude, bool includeNeighborhood = true)
         {
             var request = new RestRequest("Locations/{latitude},{longitude}") { ContentType = ContentTypes.Json };
@@ -199,12 +199,16 @@ namespace Bing
         }
 
         /// <summary>
-        /// 
+        /// Get location(s) for a given search term.
         /// </summary>
-        /// <param name="query"></param>
-        /// <param name="maxResults"></param>
+        /// <param name="query">A string that contains information about a location, such as an address or landmark name.</param>
+        /// <param name="maxResults">Specifies the maximum number of locations to return in the response.</param>
         /// <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="MapsResponse&lt;Location&gt;"/> object with the results from Bing.</returns>
+        /// <remarks>
+        /// The strings "Space Needle" (a landmark) and "1 Microsoft Way Redmond WA" (an address) are examples of query strings with 
+        /// location information.
+        /// </remarks>
         /// <exception cref="ArgumentNullException"></exception>
         public async Task<MapsResponse<Location>> LocationQuery(string query, int maxResults = 5, bool includeNeighborhood = true)
         {
