@@ -25,7 +25,7 @@ var client = new SpatialDataClient("YOUR BING KEY HERE");
 // All Bing results are in Kilometers, but convert them to Miles with our built-in conversion helper.
 var results = await client.Find<PointOfInterest>("NorthAmericaPOI", "1 Microsoft Way, Redmond, WA",
     client.ConvertMiToKm(3), filter, top: 100);
-'''
+```
 
 For more information, check out our [online documentation at NuDoq](http://www.nudoq.org/#!/Projects/Bing.RestClient).
 
