@@ -12,6 +12,11 @@ Quick start
 
 Install the NuGet package: `Install-Package Bing.RestClient -Pre`, clone the repo, `git clone git://github.com/advancedrei/Bing.RestClient.git`, or [download the latest release](https://github.com/advancedrei/Binf.RestClient/zipball/master).
 
+
+Quick start
+-----------
+Here is a simple example of leveraging the SpatialDataClient to locate nearby points of interest.
+
 ```csharp
 // Take advantage of built-in Point of Interest groups
 var list = PoiEntityGroups.Government();
@@ -26,6 +31,8 @@ var client = new SpatialDataClient("YOUR BING KEY HERE");
 var results = await client.Find<PointOfInterest>("NorthAmericaPOI", "1 Microsoft Way, Redmond, WA",
     client.ConvertMiToKm(3), filter, top: 100);
 ```
+
+You can also geocode addresses and reverse-geocode coordinates with the MapsClient.
 
 For more information, check out our [online documentation at NuDoq](http://www.nudoq.org/#!/Projects/Bing.RestClient).
 
