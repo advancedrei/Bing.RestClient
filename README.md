@@ -1,35 +1,40 @@
-[PortableRest 2.0 Beta](http://github.com/AdvancedREI/PortableRest)
+[Bing Rest Client](http://github.com/AdvancedREI/Bing.RestClient)
 =================
 
-PortableRest is a Portable Class Library for implementing REST API clients in other Portable Class Libraries. It leverages JSON.NET for rapid, customizable serialization, as well as the Microsoft.Bcl.Async library for awaitable execution on any platform. It is designed to be largely drop-in compatible with RestSharp, though you will need to make some changes and recompile.
+Bing.RestClient is a Portable Class Library that makes it easy to leverage Bing services from any kind of modern application.
 
-Works on .NET 4.5, Windows Phone 8, and Windows 8.
+Currently handling Bing Maps and Bing Spatial APIs, this library will eventially be able to leverage Bing's entire public API surface.
 
-Design Goals
-----------
-+ Be able to write one REST client wrapper that can be used on all current- and last-generation Microsoft platforms (without the techniques we have to use for [XamlEssentials](http://github.com/AdvancedREI/XamlEssentials)).
-+ Have more control over serialization of property names (so you're not limited to the "remove all dashes" convention of RestSharp).
-+ Be able to have objects be easily serializable to local storage using standard techniques, without jumping through a lot of hoops.
-
-More Info
------------
-[Read more about PortableRest on our blog](http://advancedrei.com/blogs/development/introducing-portablerest-v2-cross-platform-rest-client-for-dotnet-apps)
-
+Works on .NET 4.5, Windows Phone 8, and Windows 8.x, as well as Android and iOS through Mono.
 
 Quick start
 -----------
 
-Install the NuGet package: `Install-Package PortableRest -Pre`, clone the repo, `git clone git://github.com/advancedrei/portablerest.git`, or [download the latest release](https://github.com/advancedrei/portablerest/zipball/master).
+Install the NuGet package: `Install-Package Bing.RestClient -Pre`, clone the repo, `git clone git://github.com/advancedrei/Bing.RestClient.git`, or [download the latest release](https://github.com/advancedrei/Binf.RestClient/zipball/master).
 
-If you are planning on redistributing your own PortableRest-based client, such as our http://gaug.es Client, you need to change your Portable Profile to .NET 4.5 and Windows Phone 8. Using .NET 4.0, Silverlight, or Windows Phone 7.X will cause this package to fail to install. If you need support for those platforms, create an issue and we'll investigate.
+```csharp
+// Take advantage of built-in Point of Interest groups
+var list = PoiEntityGroups.Government();
+list.Add(PoiEntityTypes.Bank);
 
+// Build your filter list from the group.
+var filter = PoiEntityGroups.BuildFilter(list);
+
+var client = new SpatialDataClient("YOUR BING KEY HERE");
+
+// All Bing results are in Kilometers, but convert them to Miles with our built-in conversion helper.
+var results = await client.Find<PointOfInterest>("NorthAmericaPOI", "1 Microsoft Way, Redmond, WA",
+    client.ConvertMiToKm(3), filter, top: 100);
+'''
+
+For more information, check out our [online documentation at NuDoq](http://www.nudoq.org/#!/Projects/Bing.RestClient).
 
 Bug tracker
 -----------
 
 Have a bug? Please create an issue here on GitHub that conforms with [necolas's guidelines](https://github.com/necolas/issue-guidelines).
 
-https://github.com/AdvancedREI/PortableRest/issues
+https://github.com/AdvancedREI/Bing.RestClient/issues
 
 
 
