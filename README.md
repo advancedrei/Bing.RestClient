@@ -58,13 +58,17 @@ Blog
 Read more detailed announcements, discussions, and more on [The AdvancedREI Dev Blog](http://advancedrei.com/blogs/development).
 
 
-Author
+Authors
 -------
 
 **Robert McLaws**
 
 + http://twitter.com/robertmclaws
 + http://github.com/advancedrei
+
+**Don Kackman**
+
++ https://github.com/dkackman/PortableBingGeocoder
 
 
 Copyright and license
