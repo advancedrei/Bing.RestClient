@@ -6,6 +6,8 @@
         <title>Portable REST Client for Bing APIs</title>
         <authors>AdvancedREI</authors>
         <owners>AdvancedREI</owners>
+        <projectUrl>https://github.com/advancedrei/Bing.RestClient</projectUrl>
+        <iconUrl>http://www.bing.com/s/a/bing_p_lg.ico</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Curiously, Bing does not provide a  framework for accessing their REST APIs in .NET. This library attempts to solve that problem, with a PCL that works on .NET 4.5, Windows 8.x, Windows Phone 8, and Mono.</description>
         <summary>A PCL for accessing the Bing REST APIs, powered by PortableRest.</summary>
