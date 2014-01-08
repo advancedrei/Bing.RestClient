@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata>
+        <id>Bing.RestClient</id>
+        <version>0.6.2</version>
+        <title>Portable REST Client for Bing APIs</title>
+        <authors>AdvancedREI</authors>
+        <owners>AdvancedREI</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Curiously, Bing does not provide a  framework for accessing their REST APIs in .NET. This library attempts to solve that problem, with a PCL that works on .NET 4.5, Windows 8.x, Windows Phone 8, and Mono.</description>
+        <summary>A PCL for accessing the Bing REST APIs, powered by PortableRest.</summary>
+        <releaseNotes>0.6: Merged work from PortableBingGeocoder project into Bing.Maps. (Breaking) Reorganized namespaces. Added more documentation.
+0.5.5: Added a PoiEntityGroups.BuildFilter() method.
+0.5: First release, leveraging the Spatial Data API and core objects from the Bing Maps REST Services.</releaseNotes>
+        <copyright>Copyright © 2013-2014 AdvancedREI, LLC.</copyright>
+        <tags>Bing, Spatial Data, PortableRest</tags>
+        <dependencies>
+            <dependency id="PortableRest" version="2.4.1" />
+        </dependencies>
+    </metadata>
+    <files>
+      <file src="Bing.RestClient\bin\Release\Bing.RestClient.dll" target="lib\portable-net45+wp8+win8\" />
+      <file src="Bing.RestClient\bin\Release\Bing.RestClient.pdb" target="lib\portable-net45+wp8+win8\" />
+      <file src="Bing.RestClient\bin\Release\Bing.RestClient.xml" target="lib\portable-net45+wp8+win8\" />
+      <file src="Bing.RestClient\**\*.cs" exclude="**\obj\**\*.*" target="src" />
+    </files>
+</package>
