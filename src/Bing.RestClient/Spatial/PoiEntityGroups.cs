@@ -33,6 +33,46 @@ namespace Bing.Spatial
         #region Transportation
 
         /// <summary>
+        /// Gets a list of all vehicle parking facilities.
+        /// </summary>
+        /// <returns>A List of PoiEntityTypes that represent vehicle parking facilities.</returns>
+        public static List<PoiEntityTypes> Parking()
+        {
+            return new List<PoiEntityTypes>()
+            {
+                PoiEntityTypes.ParkingLot,
+                PoiEntityTypes.ParkAndRide,
+                PoiEntityTypes.ParkingGarage,
+                PoiEntityTypes.RestArea,
+                PoiEntityTypes.TruckStopOrPlaza,
+                PoiEntityTypes.TruckParking,
+                PoiEntityTypes.RVPark
+            };
+        }
+
+        /// <summary>
+        /// Gets a list of all public transportation entities.
+        /// </summary>
+        /// <returns>A List of PoiEntityTypes that represent public transportation entities.</returns>
+        public static List<PoiEntityTypes> PublicTransportation()
+        {
+            return new List<PoiEntityTypes>()
+            {
+                PoiEntityTypes.TrainStation,
+                PoiEntityTypes.CommuterRailStation,
+                PoiEntityTypes.BusStation,
+                PoiEntityTypes.FerryTerminal,
+                PoiEntityTypes.Airport,
+                PoiEntityTypes.ParkAndRide,
+                //PoiEntityTypes.RestArea,
+                //PoiEntityTypes.HighwayExit,
+                PoiEntityTypes.PublicTransitAccess,
+                PoiEntityTypes.PublicTransitStop,
+            };
+        }
+
+
+        /// <summary>
         /// Gets a list of all possible transportation-related entities.
         /// </summary>
         /// <returns>A List of PoiEntityTypes that represent transportation-related entities.</returns>
@@ -67,44 +107,6 @@ namespace Bing.Spatial
             };
         }
 
-        /// <summary>
-        /// Gets a list of all vehicle parking facilities.
-        /// </summary>
-        /// <returns>A List of PoiEntityTypes that represent vehicle parking facilities.</returns>
-        public static List<PoiEntityTypes> Parking()
-        {
-            return new List<PoiEntityTypes>()
-            {
-                PoiEntityTypes.ParkingLot,
-                PoiEntityTypes.ParkAndRide,
-                PoiEntityTypes.ParkingGarage,
-                PoiEntityTypes.RestArea,
-                PoiEntityTypes.TruckStopOrPlaza,
-                PoiEntityTypes.TruckParking,
-                PoiEntityTypes.RVPark
-            };
-        }
-
-        /// <summary>
-        /// Gets a list of all public transportation entities.
-        /// </summary>
-        /// <returns>A List of PoiEntityTypes that represent public transportation entities.</returns>
-        public static List<PoiEntityTypes> PublicTransportation()
-        {
-            return new List<PoiEntityTypes>()
-            {
-                PoiEntityTypes.TrainStation,
-                PoiEntityTypes.CommuterRailStation,
-                PoiEntityTypes.BusStation,
-                PoiEntityTypes.FerryTerminal,
-                PoiEntityTypes.Airport,
-                PoiEntityTypes.ParkAndRide,
-                PoiEntityTypes.RestArea,
-                PoiEntityTypes.HighwayExit,
-                PoiEntityTypes.PublicTransitAccess,
-                PoiEntityTypes.PublicTransitStop,
-            };
-        }
 
         #endregion
 
@@ -214,17 +216,161 @@ namespace Bing.Spatial
         {
             return new List<PoiEntityTypes>()
             {
-                PoiEntityTypes.Winery,
+                PoiEntityTypes.AgriculturalProductMarket,
+                PoiEntityTypes.Bookstore,
+                PoiEntityTypes.HistoricalMonument,
+                PoiEntityTypes.Museum,
                 PoiEntityTypes.Nightlife,
                 PoiEntityTypes.PerformingArts,
                 PoiEntityTypes.Theater,
+                PoiEntityTypes.Winery,
+
+            };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<PoiEntityTypes> NightLife()
+        {
+            return new List<PoiEntityTypes>()
+            {
+                PoiEntityTypes.Cinema,
+                PoiEntityTypes.BowlingAlley,
+                PoiEntityTypes.BowlingCentre,
+                PoiEntityTypes.Casino,
+                PoiEntityTypes.Theater,
                 PoiEntityTypes.AgriculturalProductMarket,
-                PoiEntityTypes.Bookstore
+                PoiEntityTypes.Bookstore,
+                PoiEntityTypes.Museum,
+                PoiEntityTypes.BarOrPub
             };
         }
 
         #endregion
 
+        #region Education
+
+        /// <summary>
+        /// A list of all entities associated with Educations.
+        /// </summary>
+        /// <returns></returns>
+        public static List<PoiEntityTypes> Education()
+        {
+            return new List<PoiEntityTypes>()
+            {
+                PoiEntityTypes.HigherEducation,
+                PoiEntityTypes.HistoricalMonument,
+                PoiEntityTypes.Library,
+                PoiEntityTypes.Museum,
+                PoiEntityTypes.School,
+            };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<PoiEntityTypes> Schools()
+        {
+            return new List<PoiEntityTypes>()
+            {
+                PoiEntityTypes.School,
+                PoiEntityTypes.HigherEducation
+            };
+        }
+
+        #endregion
+
+        #region Healthcare
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<PoiEntityTypes> Healthcare()
+        {
+            return new List<PoiEntityTypes>()
+            {
+                PoiEntityTypes.Dentist,
+                PoiEntityTypes.Hospital,
+                PoiEntityTypes.MedicalService,
+                PoiEntityTypes.Optical,
+                PoiEntityTypes.Pharmacy,
+                PoiEntityTypes.Physician,
+            };
+        }
+
+        #endregion
+
+        #region Sports
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<PoiEntityTypes> Sports()
+        {
+            return new List<PoiEntityTypes>()
+            {
+                PoiEntityTypes.SportingAndInstructionalCamp,
+                PoiEntityTypes.Boating,
+                PoiEntityTypes.RaceTrack,
+                PoiEntityTypes.GolfPracticeRange,
+                PoiEntityTypes.HealthClub,
+                PoiEntityTypes.BowlingAlley,
+                PoiEntityTypes.SportsActivities,
+                PoiEntityTypes.BowlingCentre,
+                PoiEntityTypes.SportsComplex,
+                PoiEntityTypes.ParkOrRecreationArea,
+                PoiEntityTypes.GolfCourse,
+                PoiEntityTypes.AmusementPark,
+                PoiEntityTypes.SportsCentre,
+                PoiEntityTypes.IceSkatingRink,
+                PoiEntityTypes.SkiResort,
+                PoiEntityTypes.PublicSportsAirport,
+
+            };
+        }
+
+        #endregion
+
+        #region Shopping
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<PoiEntityTypes> Clothing()
+        {
+            return new List<PoiEntityTypes>()
+            {
+                PoiEntityTypes.ClothingStore,
+                PoiEntityTypes.MensApparel,
+                PoiEntityTypes.ShoeStore,
+                PoiEntityTypes.SpecialtyClothingStore,
+                PoiEntityTypes.WomensApparel,
+            };
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<PoiEntityTypes> Grocery()
+        {
+            return new List<PoiEntityTypes>()
+            {
+                PoiEntityTypes.ConvenienceStore,
+                PoiEntityTypes.GroceryStore,
+                PoiEntityTypes.SpecialtyFoodStore,
+            };
+        }
+
+
+        #endregion
 
     }
 }

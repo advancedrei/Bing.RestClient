@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Bing.RestClient</id>
-        <version>0.6.2</version>
+        <version>0.6.4</version>
         <title>Portable REST Client for Bing APIs</title>
         <authors>AdvancedREI</authors>
         <owners>AdvancedREI</owners>

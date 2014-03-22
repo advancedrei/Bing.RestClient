@@ -72,6 +72,7 @@
     <Compile Include="Maps\TransitLine.cs" />
     <Compile Include="Maps\Warning.cs" />
     <Compile Include="Spatial\EuropeanPointOfInterest.cs" />
+    <Compile Include="Spatial\ListExtensions.cs" />
     <Compile Include="Spatial\PoiEntityGroups.cs" />
     <Compile Include="Spatial\PoiEntityTypes.cs" />
     <Compile Include="Spatial\PointOfInterest.cs" />
