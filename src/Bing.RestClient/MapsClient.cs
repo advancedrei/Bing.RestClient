@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using Bing.Maps;
@@ -189,8 +190,8 @@ namespace Bing
         public async Task<MapsResponse<Location>> LocationQuery(double latitude, double longitude, bool includeNeighborhood = true)
         {
             var request = new RestRequest("Locations/{latitude},{longitude}") { ContentType = ContentTypes.Json };
-            request.AddUrlSegment("latitude", latitude.ToString());
-            request.AddUrlSegment("longitude", longitude.ToString());
+            request.AddUrlSegment("latitude", latitude.ToString(NumberFormatInfo.InvariantInfo));
+            request.AddUrlSegment("longitude", longitude.ToString(NumberFormatInfo.InvariantInfo));
             request.AddQueryString("inclnb", includeNeighborhood ? 1 : 0);
 
             PrepRequest(ref request);
